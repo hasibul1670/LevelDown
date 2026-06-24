@@ -2,17 +2,36 @@
 
 Chrome/Edge extension for Dynamics 365 and Power Apps model-driven apps.
 
-Level Down helps developers and admins quickly inspect records, fields, logical names, form details, environment info, and Dataverse Web API URLs from the current browser session.
+Level Down helps developers and admins inspect records, fields, logical names, form details, environment info, and Dataverse Web API URLs from the current browser session.
 
-## Features
+## Use Cases
 
-- Copy record ID, table name, record URL, and Web API URL.
-- Show all fields, changed fields, choices, and OptionSet values.
-- Show logical names beside form labels with copy buttons.
-- Unlock/lock fields locally for testing.
-- Refresh subgrids.
-- Open admin/helper pages.
-- Includes a bundled REST Builder.
+- Quickly copy record ID, table name, record URL, and Web API URL.
+- View all fields or only changed fields on a form.
+- Show logical names beside visible form labels.
+- Copy logical names directly from the form.
+- Check choices, OptionSets, tabs, sections, roles, and environment details.
+- Unlock or lock fields locally while testing forms.
+- Refresh subgrids during debugging.
+- Build and test Dataverse Web API requests with the bundled REST Builder.
+
+## Screenshots
+
+### Fields
+
+![Level Down Fields tab](screenshots/fields-tab.png)
+
+### Tools
+
+![Level Down Tools tab](screenshots/tools-tab.png)
+
+### Fields In Dynamics
+
+![Level Down Fields tab in Dynamics](screenshots/fields-tab-dynamics.png)
+
+### Tools In Dynamics
+
+![Level Down Tools tab in Dynamics](screenshots/tools-tab-dynamics.png)
 
 ## Install In Chrome
 
@@ -24,8 +43,6 @@ Level Down helps developers and admins quickly inspect records, fields, logical 
 6. Done.
 
 Open a Dynamics/Power Apps record form and click the Level Down icon.
-
-After code changes, reload the extension from `chrome://extensions` and refresh the Dynamics tab.
 
 ## Install In Edge
 
@@ -39,17 +56,6 @@ After code changes, reload the extension from `chrome://extensions` and refresh 
 - Works only on configured Dynamics and Power Apps hosts in `manifest.json`.
 - Data stays in the browser unless you copy it or execute a REST Builder request.
 - REST Builder can modify Dataverse data if you run create/update/delete requests.
-
-## Development
-
-No build step is required.
-
-Basic checks:
-
-```bash
-node --check content.js popup.js result.js injected.js drb-embed.js drb-ace-config.js
-node -e "JSON.parse(require('fs').readFileSync('manifest.json', 'utf8'))"
-```
 
 ## Third-Party
 
