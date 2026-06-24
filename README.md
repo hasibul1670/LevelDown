@@ -46,21 +46,14 @@ Some actions can still affect your current browser session:
 
 ### Chrome
 
-Use these steps if you downloaded or cloned this project and want to install it locally in Chrome:
+1. Download or clone this project.
+2. Open `chrome://extensions`.
+3. Turn on **Developer mode**.
+4. Click **Load unpacked**.
+5. Select the `LevelDown` folder.
+6. Done. Open a Dynamics/Power Apps record and click the Level Down icon.
 
-1. Download or clone this repository to your computer.
-2. Make sure the folder contains `manifest.json` at the top level.
-3. Open Google Chrome.
-4. Go to `chrome://extensions`.
-5. Turn on **Developer mode** in the top-right corner.
-6. Click **Load unpacked**.
-7. Select the `LevelDown` project folder.
-8. Confirm that **Level Down** appears in your extensions list.
-9. Pin the extension from the Chrome toolbar if you want quick access.
-10. Open a Dynamics 365 or Power Apps model-driven app record form.
-11. Click the **Level Down** extension icon and choose an action.
-
-If you edit any files after installing, go back to `chrome://extensions`, click **Reload** on Level Down, and refresh your Dynamics tab.
+After code changes, click **Reload** on `chrome://extensions` and refresh the Dynamics tab.
 
 ### Microsoft Edge
 
@@ -68,8 +61,7 @@ If you edit any files after installing, go back to `chrome://extensions`, click 
 2. Enable **Developer mode**.
 3. Click **Load unpacked**.
 4. Select the `LevelDown` folder.
-5. Open a model-driven app record form.
-6. Click **Level Down** and choose an action.
+5. Done. Open a Dynamics/Power Apps record and click the Level Down icon.
 
 After changing extension files, reload Level Down from the browser extension page and refresh the Dynamics tab.
 
