@@ -1,112 +1,124 @@
 # Level Down
 
-Level Down is a local browser extension for personal Dynamics 365 and Power Apps model-driven app development/admin work. It inspects the current form, record, fields, tabs, sections, controls, and useful URLs from the browser session you are already logged into.
+Level Down is a local Chrome/Edge browser extension for Dynamics 365, Dataverse, and Power Apps model-driven app developers and administrators.
 
-Actions are launched from the popup. Large reports open in a separate Level Down browser tab, while quick page actions such as logical-name overlays, REST Builder, lock/unlock, tab toggles, subgrid refresh, and debug snapshot run directly from the popup.
+It helps inspect the current model-driven app form from the browser session you are already signed into. You can copy record details, inspect fields and metadata, show logical names beside form labels, unlock controls for local testing, refresh subgrids, open admin URLs, and launch a bundled REST Builder without sending data to an external service.
 
-## Features
+## What It Does
 
-- Copy current record ID, entity logical name, record URL, and Web API URL.
-- Show form context information, including organization URL, app ID, form type, dirty state, and current user details where available.
-- List all form fields with values, required level, dirty state, and submit mode.
-- List changed fields only.
-- Show choice and multi-select choice values and available options.
-- Show OptionSet values in a table grouped by option set control.
-- Add and remove a temporary logical-name overlay beside matched visible field labels.
-- Unlock or lock form controls for developer/admin testing without saving.
-- List tabs, sections, visibility, and display state.
-- Toggle tab visibility on the current form view.
-- Refresh subgrids.
-- Copy a debug snapshot as JSON.
-- Environment/admin helpers for environment details, settings, roles, users, current user record, mailbox, command debugger, forms monitor, and entity metadata.
-- Bundled Dataverse REST Builder launcher for advanced Web API request building, code generation, request collections, and exports.
-- Open large report results in a dedicated extension tab with search, copy, rerun, and source-tab controls.
-- Run quick form/tools actions without opening another tab.
+- Copies the current record ID, table logical name, record URL, and Web API URL.
+- Shows form context details such as organization URL, app ID, form type, dirty state, current user, and roles.
+- Lists all fields on the current form, including values, required level, dirty state, and submit mode.
+- Lists changed fields only.
+- Shows choice, multi-select choice, and OptionSet values.
+- Adds removable logical-name badges beside matched visible field labels.
+- Copies logical names from each badge using the inline copy icon.
+- Unlocks or locks form controls in the current browser view for testing.
+- Lists tabs, sections, visibility, and display state.
+- Toggles tab visibility locally.
+- Refreshes subgrids.
+- Copies a debug snapshot as JSON.
+- Opens environment, user, role, mailbox, command debugger, forms monitor, and metadata helpers.
+- Opens large reports in a dedicated Level Down result tab with search, copy, rerun, and source-tab controls.
+- Bundles Dataverse REST Builder for Web API request building and execution from the current Dynamics page context.
 
-## Safety Warning
+## Safety And Scope
 
-This extension is for personal development and admin troubleshooting only. It does not bypass Dynamics 365, Power Apps, Dataverse, or browser security permissions. It can only interact with data and controls the logged-in user can already access in the browser.
+Level Down is intended for development, troubleshooting, and admin inspection. It does not bypass Dynamics 365, Power Apps, Dataverse, browser, or tenant security. It can only interact with data and controls available to the currently signed-in browser user.
 
-Level Down does not auto-save records, auto-delete records, bulk update records, bulk create records, send data to servers, use external APIs, load remote scripts, collect analytics, or track usage. Data stays in the browser unless you explicitly copy it.
+The extension does not:
 
-Unlocking fields only changes the current browser form state for testing. It does not change security, business rules, server-side validation, field-level security, plugins, or the original form configuration.
+- Collect analytics.
+- Track usage.
+- Send extension telemetry.
+- Load remote scripts.
+- Auto-save records.
+- Auto-delete records.
+- Bulk create or bulk update records.
+- Store Dynamics data outside the browser.
 
-The bundled Dataverse REST Builder can generate and execute Dataverse Web API requests. Some request types can create, update, delete, associate, or otherwise modify data if you execute them. Review every request before running it, especially in production.
+Some actions can still affect your current browser session:
 
-## Chrome Installation
+- **Unlock Fields** only changes control state in the current form view. It does not change field security, business rules, plugins, server validation, or form configuration.
+- **REST Builder** can execute Dataverse Web API requests. Depending on the request you configure, that can create, update, delete, associate, or otherwise modify data. Review generated requests carefully before executing them, especially in production.
 
-1. Open Chrome.
-2. Go to `chrome://extensions`.
-3. Enable **Developer mode**.
-4. Click **Load unpacked**.
-5. Select the `LevelDown` extension folder.
-6. Pin the extension if desired.
-7. Open a Dynamics 365 or Power Apps model-driven app.
-8. Open a record form.
-9. Click **Level Down**.
-10. Pick an action. A new Level Down result tab opens beside the Dynamics tab.
+## Installation
 
-## Microsoft Edge Installation
+### Chrome
 
-1. Open Edge.
-2. Go to `edge://extensions`.
-3. Enable **Developer mode**.
-4. Click **Load unpacked**.
-5. Select the `LevelDown` extension folder.
-6. Open a model-driven app record and click **Level Down**.
-7. Pick an action. A new Level Down result tab opens beside the Dynamics tab.
+1. Open `chrome://extensions`.
+2. Enable **Developer mode**.
+3. Click **Load unpacked**.
+4. Select the `LevelDown` folder.
+5. Pin the extension if desired.
+6. Open a Dynamics 365 or Power Apps model-driven app record form.
+7. Click **Level Down** and choose an action.
 
-## Troubleshooting
+### Microsoft Edge
 
-### Xrm not found
+1. Open `edge://extensions`.
+2. Enable **Developer mode**.
+3. Click **Load unpacked**.
+4. Select the `LevelDown` folder.
+5. Open a model-driven app record form.
+6. Click **Level Down** and choose an action.
 
-If you see `Dynamics form context was not found. Open a model-driven app record form and try again.`, reload the Dynamics tab and make sure you are on a model-driven app record form. Some maker pages, dashboards, custom pages, and grids do not expose the same form context.
+After changing extension files, reload Level Down from the browser extension page and refresh the Dynamics tab.
 
-### Not working on non-record pages
+## Supported Hosts
 
-Record, field, tab, and control actions require an open record form. Open a specific row/record and try again.
+The default manifest supports common Dynamics and Power Apps hosts:
 
-### Extension reload required after code changes
+- `https://*.crm.dynamics.com/*`
+- `https://*.dynamics.com/*`
+- `https://*.powerapps.com/*`
+- `https://make.powerapps.com/*`
+- `https://*.crm4.dynamics.com/*`
+- `https://*.crm11.dynamics.com/*`
+- `https://*.crm12.dynamics.com/*`
 
-After editing extension files, go to `chrome://extensions` or `edge://extensions` and click reload on Level Down. Then reload the Dynamics page.
+If your environment uses another regional or custom host pattern, update these sections in `manifest.json`:
 
-If you loaded or reloaded the extension while a Dynamics tab was already open, Level Down will try to inject its content helper automatically. If the browser blocks that, reload the Dynamics tab once.
+- `host_permissions`
+- `content_scripts.matches`
+- `web_accessible_resources.matches`
 
-### REST Builder opens but cannot load data
+## Repository Structure
 
-Use the **REST Builder** button from an open Dynamics 365 / Power Apps model-driven app tab. The bundled builder runs inside that Dynamics page so it can use the current `Xrm` context and your existing session permissions.
+```text
+LevelDown/
+  manifest.json              Extension manifest.
+  popup.html                 Popup UI.
+  popup.css                  Popup styles.
+  popup.js                   Popup command routing.
+  content.js                 Content-script bridge between extension and page.
+  injected.js                Page-context Dynamics/Xrm inspection logic.
+  result.html                Large report result page.
+  result.css                 Result page styles.
+  result.js                  Result rendering and rerun/copy behavior.
+  drb-embed.js               Level Down wrapper for bundled REST Builder.
+  drb-ace-config.js          Ace editor path configuration for REST Builder.
+  drb-leveldown-theme.css    REST Builder visual overrides.
+  icons/                     Extension icons.
+  DRB/                       Bundled Dataverse REST Builder assets.
+```
 
-### Host permissions
+## How It Works
 
-Level Down runs only on configured Dynamics and Power Apps hosts. If your environment uses a different host pattern, add it to `host_permissions`, `content_scripts.matches`, and `web_accessible_resources.matches` in `manifest.json`.
+Chrome and Edge content scripts run in an isolated JavaScript world, so they cannot reliably access page objects such as `window.Xrm` directly. Level Down uses an injected page helper for the actual model-driven app inspection.
 
-## Privacy
+Flow:
 
-- No data leaves your browser.
-- No analytics.
-- No tracking.
-- No remote scripts.
-- No external network calls except user-initiated Dataverse Web API calls made by the bundled REST Builder against the environment you opened it from.
-- No Dynamics data is stored by the extension unless you copy it yourself.
+1. `popup.js` receives the selected action.
+2. For quick actions, `popup.js` sends the command to the active Dynamics tab.
+3. For larger reports, `popup.js` opens `result.html` with the command and source tab ID.
+4. `content.js` injects `injected.js` into the Dynamics page context.
+5. `injected.js` accesses `window.Xrm`, form context, controls, attributes, tabs, metadata, and admin URLs.
+6. `injected.js` posts the response back to `content.js`.
+7. `content.js` returns the response to the popup or result tab.
+8. `result.js` renders tables, JSON, copy actions, filters, and rerun controls.
 
-## Third-Party Code
-
-Level Down bundles Dataverse REST Builder from the local `DRB` folder. Dataverse REST Builder is MIT licensed, copyright Guido Preite. Keep `DRB/LICENSE` with this project when redistributing or sharing this extension.
-
-## Development Notes
-
-Chrome content scripts run in an isolated JavaScript world, so they cannot reliably access page objects such as `window.Xrm` directly. Level Down uses this flow:
-
-1. `popup.js` sends a command to `content.js`.
-2. `popup.js` opens `result.html` in a new extension tab with the selected command and source tab ID.
-3. `result.js` sends the command to `content.js` in the Dynamics tab.
-4. `content.js` injects `injected.js` into the actual page context once.
-5. `injected.js` accesses `window.Xrm` and the form context where available, including visible same-origin iframes where possible.
-6. `injected.js` posts a response back with `window.postMessage`.
-7. `content.js` forwards the result to `result.js`.
-8. `result.js` renders the result and copy actions in the dedicated result tab.
-
-The command message shape is:
+Command shape:
 
 ```json
 {
@@ -116,7 +128,7 @@ The command message shape is:
 }
 ```
 
-Responses use:
+Success response:
 
 ```json
 {
@@ -127,7 +139,7 @@ Responses use:
 }
 ```
 
-or:
+Error response:
 
 ```json
 {
@@ -137,4 +149,102 @@ or:
   "error": "Friendly error message"
 }
 ```
-# LevelDown
+
+## REST Builder
+
+Level Down bundles Dataverse REST Builder inside the local `DRB/` folder and opens it inside the current Dynamics page. This lets the builder use the current browser session and page context.
+
+Level Down also adds:
+
+- Level Down branding.
+- Local styling.
+- Ace editor path configuration.
+- An execute shortcut.
+- Result output handling for generated requests.
+
+REST Builder is powerful. Generated requests can modify data. Review the selected request type, table, record IDs, payload, and generated code before execution.
+
+## Troubleshooting
+
+### Dynamics form context was not found
+
+Reload the Dynamics tab and make sure you are on a model-driven app record form. Maker pages, dashboards, custom pages, grids, and some dialogs may not expose the same form context.
+
+### Actions do not work after extension reload
+
+Reload the extension from `chrome://extensions` or `edge://extensions`, then refresh the Dynamics tab. Already-open pages may still contain an older injected helper until refreshed.
+
+### Logical name badges look wrong or stale
+
+Click **Hide Logical Names**, refresh the page, then click **Show Logical Names** again. Dynamics virtualizes parts of the form, so badges are added as visible markup appears.
+
+### REST Builder opens but does not load
+
+Make sure the local `DRB/` folder exists and contains:
+
+- `DRB/js/drb_requirements.js`
+- `DRB/js/drb_custom.js`
+- `DRB/css/drb_requirements.css`
+- `DRB/css/drb_custom.css`
+
+Then reload the extension and refresh the Dynamics tab.
+
+### REST Builder result is blank
+
+Open the browser DevTools console for the Dynamics tab and inspect request errors. Browser-blocked telemetry errors are usually unrelated. Dataverse request errors should appear in the REST Builder Results tab after execution.
+
+## Development
+
+There is no build step. This is a static Manifest V3 extension.
+
+Recommended local checks:
+
+```bash
+node --check content.js
+node --check popup.js
+node --check result.js
+node --check injected.js
+node --check drb-embed.js
+node --check drb-ace-config.js
+node -e "JSON.parse(require('fs').readFileSync('manifest.json', 'utf8'))"
+```
+
+When editing:
+
+1. Change the files.
+2. Reload the unpacked extension.
+3. Refresh the Dynamics tab.
+4. Retest the popup action.
+
+If you change the injected helper behavior, update the `INJECTION_VERSION` constants in `content.js` and `injected.js` so open tabs load the new helper after refresh.
+
+## Contributing
+
+Issues and pull requests are welcome.
+
+Good contributions include:
+
+- Support for additional Dynamics host patterns.
+- More robust logical-name matching for new model-driven app markup.
+- Safer REST Builder execution handling.
+- Accessibility fixes.
+- Documentation improvements.
+- Focused bug fixes with reproduction steps.
+
+Please keep changes scoped and avoid adding remote services, analytics, or tracking.
+
+## Privacy
+
+Level Down is designed to run locally in the browser. Data stays in your browser unless you explicitly copy it, open a generated URL, or execute a Dataverse request from REST Builder.
+
+The bundled REST Builder may make Dataverse Web API calls to the environment you opened it from when you execute a request.
+
+## Third-Party Code
+
+Level Down bundles Dataverse REST Builder in the `DRB/` folder.
+
+Dataverse REST Builder is MIT licensed and copyrighted by Guido Preite. Keep `DRB/LICENSE` with this project when redistributing or sharing the extension.
+
+## License
+
+Add a repository-level license before publishing this project as open source. If you choose MIT, include a `LICENSE` file at the repository root.
