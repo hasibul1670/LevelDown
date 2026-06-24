@@ -1,0 +1,26 @@
+I built Level Down, a Chrome/Edge extension for Dynamics 365 and Power Apps model-driven app developers/admins.
+
+It helps with the small debugging tasks we do all the time:
+
+- Copy record ID, table name, record URL, and Web API URL
+- View all fields or only changed fields on a form
+- Show logical names beside form labels
+- Copy logical names directly from the form
+- Check choices, OptionSets, tabs, sections, roles, and environment details
+- Unlock/lock fields locally for testing
+- Refresh subgrids
+- Use a bundled Dataverse REST Builder from the current browser session
+
+The goal is simple: fewer clicks, less digging through form metadata, and faster Dataverse troubleshooting.
+
+It runs locally in the browser and does not send data to an external service. REST Builder requests only run when the user explicitly executes them.
+
+Install locally:
+1. Open chrome://extensions
+2. Enable Developer mode
+3. Click Load unpacked
+4. Select the LevelDown folder
+
+I’m preparing this as an open-source tool and would love feedback from Dynamics 365 / Power Platform developers and admins.
+
+#Dynamics365 #PowerApps #PowerPlatform #Dataverse #ChromeExtension #DeveloperTools

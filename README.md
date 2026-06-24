@@ -19,19 +19,18 @@ Level Down helps developers and admins inspect records, fields, logical names, f
 
 ### Fields
 
-![Level Down Fields tab](screenshots/fields-tab.png)
+![alt text](image.png)
 
 ### Tools
 
-![Level Down Tools tab](screenshots/tools-tab.png)
+![alt text](image-1.png)
 
 ### Fields In Dynamics
 
-![Level Down Fields tab in Dynamics](screenshots/fields-tab-dynamics.png)
+![alt text](image-2.png)
 
 ### Tools In Dynamics
-
-![Level Down Tools tab in Dynamics](screenshots/tools-tab-dynamics.png)
+![alt text](image-3.png)
 
 ## Install In Chrome
 
