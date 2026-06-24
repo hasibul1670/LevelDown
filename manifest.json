@@ -1,0 +1,73 @@
+{
+  "manifest_version": 3,
+  "name": "Level Down",
+  "version": "1.0.0",
+  "description": "Personal Dynamics 365 and Power Apps model-driven app helper.",
+  "action": {
+    "default_title": "Level Down",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "tabs"
+  ],
+  "host_permissions": [
+    "https://*.crm.dynamics.com/*",
+    "https://*.dynamics.com/*",
+    "https://*.powerapps.com/*",
+    "https://make.powerapps.com/*",
+    "https://*.crm4.dynamics.com/*",
+    "https://*.crm11.dynamics.com/*",
+    "https://*.crm12.dynamics.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.crm.dynamics.com/*",
+        "https://*.dynamics.com/*",
+        "https://*.powerapps.com/*",
+        "https://make.powerapps.com/*",
+        "https://*.crm4.dynamics.com/*",
+        "https://*.crm11.dynamics.com/*",
+        "https://*.crm12.dynamics.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "injected.js",
+        "drb-embed.js",
+        "drb-ace-config.js",
+        "drb-leveldown-theme.css",
+        "DRB/js/*",
+        "DRB/css/*",
+        "DRB/img/*"
+      ],
+      "matches": [
+        "https://*.crm.dynamics.com/*",
+        "https://*.dynamics.com/*",
+        "https://*.powerapps.com/*",
+        "https://make.powerapps.com/*",
+        "https://*.crm4.dynamics.com/*",
+        "https://*.crm11.dynamics.com/*",
+        "https://*.crm12.dynamics.com/*"
+      ]
+    }
+  ]
+}

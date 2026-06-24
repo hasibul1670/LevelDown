@@ -1,0 +1,275 @@
+:root {
+  color-scheme: dark;
+  --bg: #07111f;
+  --panel: #111d33;
+  --panel-2: #0c1728;
+  --line: #263a5f;
+  --text: #f4f8ff;
+  --muted: #a9b8d0;
+  --accent: #2f6fed;
+  --accent-2: #20c7b5;
+  --danger: #ff738f;
+  --good: #65e6a7;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  width: 420px;
+  min-height: 560px;
+  margin: 0;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(47, 111, 237, 0.22), transparent 34%),
+    linear-gradient(145deg, #07111f 0%, #0d1a2f 58%, #101f39 100%);
+  font: 14px/1.45 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+button {
+  font: inherit;
+}
+
+.shell {
+  padding: 16px;
+}
+
+.header {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.mark {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border: 0;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #0a3f9c, #17a18f);
+  box-shadow: 0 8px 24px rgba(9, 12, 30, 0.42);
+  font-weight: 800;
+  letter-spacing: 0;
+  font-size: 30px;
+  color: #ffffff;
+}
+
+.title-row {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+}
+
+h1,
+h2,
+p {
+  margin: 0;
+}
+
+h1 {
+  font-size: 20px;
+  line-height: 1.1;
+}
+
+.version {
+  color: var(--accent-2);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.header p {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.tabs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.tab-button,
+.button-grid button,
+.copy-button {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--text);
+  background: rgba(20, 27, 52, 0.82);
+  cursor: pointer;
+}
+
+.tab-button {
+  min-height: 36px;
+  color: var(--muted);
+}
+
+.tab-button.active {
+  color: #fff;
+  border-color: rgba(47, 111, 237, 0.82);
+  background: rgba(47, 111, 237, 0.24);
+}
+
+.tab-panel {
+  display: none;
+}
+
+.tab-panel.active {
+  display: block;
+}
+
+.button-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.button-grid button {
+  min-height: 48px;
+  padding: 8px 10px;
+  font-weight: 700;
+  text-align: left;
+}
+
+.button-grid button:hover,
+.copy-button:hover {
+  border-color: var(--accent-2);
+  background: rgba(39, 211, 208, 0.12);
+}
+
+.button-grid button:disabled,
+.copy-button:disabled {
+  cursor: wait;
+  opacity: 0.62;
+}
+
+.result-wrap {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(11, 16, 32, 0.72);
+}
+
+.result-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 42px;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--line);
+  background: rgba(16, 23, 44, 0.9);
+}
+
+.result-toolbar h2 {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.copy-button {
+  min-height: 28px;
+  padding: 4px 10px;
+  color: var(--accent-2);
+  font-weight: 700;
+}
+
+.hidden {
+  display: none;
+}
+
+.result {
+  max-height: 326px;
+  overflow: auto;
+  padding: 12px;
+  color: var(--text);
+}
+
+.result.empty {
+  color: var(--muted);
+}
+
+.message {
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel-2);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.message.error {
+  border-color: rgba(255, 115, 143, 0.55);
+  color: #ffd9e1;
+  background: rgba(255, 115, 143, 0.1);
+}
+
+.message.success {
+  border-color: rgba(101, 230, 167, 0.5);
+  color: #dcffed;
+  background: rgba(101, 230, 167, 0.08);
+}
+
+.kv {
+  display: grid;
+  grid-template-columns: 128px minmax(0, 1fr);
+  gap: 8px 10px;
+}
+
+.key {
+  color: var(--muted);
+}
+
+.value,
+code {
+  overflow-wrap: anywhere;
+  color: #fff;
+  font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+  font-size: 12px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+th,
+td {
+  padding: 7px 6px;
+  border-bottom: 1px solid rgba(174, 185, 216, 0.18);
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  position: sticky;
+  top: -12px;
+  color: var(--muted);
+  background: #10172c;
+}
+
+td {
+  overflow-wrap: anywhere;
+}
+
+details {
+  margin: 8px 0;
+}
+
+summary {
+  cursor: pointer;
+  color: var(--accent-2);
+  font-weight: 700;
+}
+
+pre {
+  margin: 8px 0 0;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  color: #eaf0ff;
+  font-size: 12px;
+}

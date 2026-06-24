@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Level Down Result</title>
+    <link rel="stylesheet" href="result.css">
+  </head>
+  <body>
+    <main class="page">
+      <header class="topbar">
+        <div class="brand">
+          <div class="mark" aria-hidden="true">LD</div>
+          <div>
+            <p class="eyebrow">Level Down 1.0.0</p>
+            <h1 id="title">Result</h1>
+            <p id="source-url" class="source"></p>
+          </div>
+        </div>
+        <div class="actions">
+          <button id="open-source" type="button">Source Tab</button>
+          <button id="run-again" type="button">Run Again</button>
+          <button id="copy-result" type="button" class="primary" disabled>Copy</button>
+        </div>
+      </header>
+
+      <section id="status" class="status">Running command...</section>
+
+      <section id="tools" class="tools hidden">
+        <input id="search" type="search" placeholder="Filter results">
+        <button id="open-url" type="button" class="hidden">Open URL</button>
+      </section>
+
+      <section id="result" class="result" aria-live="polite"></section>
+    </main>
+    <script src="result.js"></script>
+  </body>
+</html>

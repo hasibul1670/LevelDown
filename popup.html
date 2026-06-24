@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Level Down</title>
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <main class="shell">
+      <header class="header">
+        <div class="mark" aria-hidden="true">LD</div>
+        <div>
+          <div class="title-row">
+            <h1>Level Down</h1>
+            <span class="version">1.0.0</span>
+          </div>
+          <p>Dynamics 365 / Power Apps Helper</p>
+        </div>
+      </header>
+
+      <nav class="tabs" aria-label="Level Down sections">
+        <button class="tab-button active" data-tab="fields" type="button">Fields</button>
+        <button class="tab-button" data-tab="form" type="button">Form</button>
+        <button class="tab-button" data-tab="tools" type="button">Tools</button>
+        <button class="tab-button" data-tab="admin" type="button">Admin</button>
+      </nav>
+
+      <section class="tab-panel active" data-panel="fields">
+        <div class="button-grid">
+          <button data-command="GET_RECORD_ID" type="button">Record ID</button>
+          <button data-command="GET_ENTITY_NAME" type="button">Entity Name</button>
+          <button data-command="GET_RECORD_URL" type="button">Record URL</button>
+          <button data-command="GET_WEB_API_URL" type="button">Web API URL</button>
+          <button data-command="GET_ALL_FIELDS" type="button">All Fields</button>
+          <button data-command="GET_CHANGED_FIELDS" type="button">Changed Fields</button>
+          <button data-command="GET_CHOICE_VALUES" type="button">Choice Values</button>
+          <button data-command="GET_OPTIONSET_VALUES" type="button">OptionSet Values</button>
+          <button data-command="SHOW_LOGICAL_NAMES" type="button">Show Logical Names</button>
+          <button data-command="HIDE_LOGICAL_NAMES" type="button">Hide Logical Names</button>
+        </div>
+      </section>
+
+      <section class="tab-panel" data-panel="form">
+        <div class="button-grid">
+          <button data-command="GET_FORM_INFO" type="button">Form Info</button>
+          <button data-command="GET_TABS_SECTIONS" type="button">Tabs &amp; Sections</button>
+          <button data-command="TOGGLE_TABS" type="button">Toggle Tabs</button>
+        </div>
+      </section>
+
+      <section class="tab-panel" data-panel="tools">
+        <div class="button-grid">
+          <button data-command="OPEN_REST_BUILDER" type="button">REST Builder</button>
+          <button data-command="UNLOCK_FIELDS" type="button">Unlock Fields</button>
+          <button data-command="LOCK_FIELDS" type="button">Lock Fields</button>
+          <button data-command="REFRESH_SUBGRIDS" type="button">Refresh Subgrids</button>
+          <button data-command="GET_DEBUG_SNAPSHOT" type="button">Debug Snapshot</button>
+        </div>
+      </section>
+
+      <section class="tab-panel" data-panel="admin">
+        <div class="button-grid">
+          <button data-command="GET_ENVIRONMENT_DETAILS" type="button">Environment Details</button>
+          <button data-command="OPEN_ENVIRONMENT_SETTINGS" type="button">Environment Settings</button>
+          <button data-command="GET_MY_ROLES" type="button">My Roles</button>
+          <button data-command="OPEN_USERS_AND_ROLES" type="button">Users and Roles</button>
+          <button data-command="OPEN_MY_USER_RECORD" type="button">My User Record</button>
+          <button data-command="OPEN_MY_MAILBOX" type="button">My Mailbox</button>
+          <button data-command="OPEN_COMMAND_DEBUGGER" type="button">Command Debugger</button>
+          <button data-command="OPEN_FORMS_MONITOR" type="button">Forms Monitor</button>
+          <button data-command="GET_ENTITY_METADATA" type="button">Entity Metadata</button>
+        </div>
+      </section>
+
+      <section class="result-wrap" aria-live="polite">
+        <div class="result-toolbar">
+          <h2 id="result-title">Result</h2>
+          <button id="copy-result" class="copy-button hidden" type="button">Copy</button>
+        </div>
+        <div id="result" class="result empty">Choose an action to inspect the current Dynamics form.</div>
+      </section>
+    </main>
+    <script src="popup.js"></script>
+  </body>
+</html>
